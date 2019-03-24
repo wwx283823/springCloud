@@ -1,0 +1,20 @@
+
+#1.server.port=8761��ʾ���ø÷���ע�����ĵĶ˿ں�
+#2.eureka.instance.hostname=localhost��ʾ���ø÷���ע�����ĵ�hostname
+#3.eureka.client.register-with-eureka=false,��������Ŀǰ������Ӧ����һ������ע�����ģ���������ͨ��Ӧ�ã�Ĭ������£����Ӧ�û���ע�����ģ�Ҳ�����Լ���ע�����Լ�������Ϊfalse��ʾ��ֹ����Ĭ����Ϊ
+#4.eureka.client.fetch-registry=false,��ʾ��ȥ���������ķ�����Ϊ����ע�����ı����ְ�����ά������ʵ������Ҳ����Ҫȥ������������
+server:
+  port: 8761
+
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+spring:
+  application:
+    name: eureka-server
