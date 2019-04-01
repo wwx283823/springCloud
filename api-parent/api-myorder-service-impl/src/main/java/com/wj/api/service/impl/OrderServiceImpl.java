@@ -1,10 +1,8 @@
 package com.wj.api.service.impl;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.ribbon.proxy.annotation.Hystrix;
-import com.wj.api.entity.User;
 import com.wj.api.service.IOrderService;
-import com.wj.api.service.feign.OrderFeignServiceImpl;
+import com.wj.api.service.feign.MemberFeignServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderServiceImpl implements IOrderService {
 
     @Autowired
-    OrderFeignServiceImpl orderFeignService;
+    MemberFeignServer orderFeignService;
 
 //    @RequestMapping("/getOrderToMember")
 //    public String getOrderToMember(@RequestParam("name")String name) {
@@ -45,6 +43,12 @@ public class OrderServiceImpl implements IOrderService {
     @HystrixCommand(fallbackMethod = "getOrderToMemberFallback")//默认开启线程池隔离，降级，熔断
     @RequestMapping("/getOrderToMemberHystrix")
     public String getOrderToMemberHystrix(@RequestParam("name")String name) {
+
+        return orderFeignService.getMemberHystrix(name)+Thread.currentThread().getName();
+    }
+
+    @RequestMapping("/getOrderToMemberHystrixByClass")
+    public String getOrderToMemberHystrixByClass(@RequestParam("name")String name) {
 
         return orderFeignService.getMemberHystrix(name)+Thread.currentThread().getName();
     }

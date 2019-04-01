@@ -29,7 +29,7 @@ public class MemberServiceImpl implements IMemberService {
     @Override
     public String getMemberHystrix(String name) {
         try{
-//            Thread.sleep(1500);
+            Thread.sleep(1500);
         }catch (Exception e){
 
         }

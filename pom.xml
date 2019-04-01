@@ -11,6 +11,8 @@
     <modules>
         <module>api-parent</module>
         <module>config-parent</module>
+        <module>euraka-server</module>
+        <module>zuul-project</module>
     </modules>
 
 </project>

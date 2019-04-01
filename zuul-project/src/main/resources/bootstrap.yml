@@ -1,0 +1,22 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 80
+spring:
+  application:
+    name: zuul-config
+  cloud:
+    config:
+    #读取的环境
+      profile: dev
+      discovery:
+      #读取的server
+        service-id: config-server
+        enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

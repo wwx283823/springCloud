@@ -1,4 +1,4 @@
-package com.wj.controller;
+package com.wj.filter;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
